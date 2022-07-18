@@ -32,8 +32,8 @@ done with a minor version bump.
 
 [crate-image]: https://img.shields.io/crates/v/ECB.svg
 [crate-link]: https://crates.io/crates/ECB
-[docs-image]: https://docs.rs/ECB/badge.svg
-[docs-link]: https://docs.rs/ECB/
+[docs-image]: https://docs.rs/ecb/badge.svg
+[docs-link]: https://docs.rs/ecb/
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
 [rustc-image]: https://img.shields.io/badge/rustc-1.56+-blue.svg
 
