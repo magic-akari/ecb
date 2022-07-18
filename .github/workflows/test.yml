@@ -17,7 +17,7 @@ jobs:
                     - stable
                     - beta
                     - nightly
-                    - 1.56
+                    - "1.56"
 
         steps:
             - uses: actions/checkout@v3
@@ -31,6 +31,7 @@ jobs:
                   components: rustfmt, clippy
 
             - run: cargo check --color always --all --all-targets
-            - run: cargo fmt --check --all
+            - if: matrix.rust != '1.56'
+              run: cargo fmt --check --all
             - run: cargo clippy --color always --all --all-targets
             - run: cargo test --color always --all --all-targets
