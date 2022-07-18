@@ -13,7 +13,7 @@ mod tests {
         type Aes128EcbEnc = Encryptor<aes::Aes128>;
         type Aes128EcbDec = Decryptor<aes::Aes128>;
 
-        let mut buf = plaintext.clone();
+        let mut buf = *plaintext;
         let pt_len = buf.len();
 
         let mode = Aes128EcbEnc::new(key.into());
@@ -24,7 +24,7 @@ mod tests {
             &ciphertext[..]
         );
 
-        let mut buf = ciphertext.clone();
+        let mut buf = *ciphertext;
         let mode = Aes128EcbDec::new(key.into());
 
         assert_eq!(
