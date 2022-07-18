@@ -9,8 +9,16 @@ env:
     RUST_MIN_STACK: 4194304
 
 jobs:
-    build:
+    ci:
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                rust:
+                    - stable
+                    - beta
+                    - nightly
+                    - 1.56
+
         steps:
             - uses: actions/checkout@v3
 
@@ -18,6 +26,8 @@ jobs:
               uses: actions-rs/toolchain@v1
               with:
                   profile: minimal
+                  toolchain: ${{ matrix.rust }}
+                  override: true
 
             - run: cargo check --color always --all --all-targets
             - run: cargo clippy --color always --all --all-targets
