@@ -25,7 +25,7 @@ default = ["block-padding"]
 alloc = ["cipher/alloc"]
 std = ["cipher/std", "alloc"]
 block-padding = ["cipher/block-padding"]
-zeroize = ["cipher/zeroize"]
+
 
 [package.metadata.docs.rs]
 all-features = true

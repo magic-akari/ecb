@@ -7,9 +7,6 @@ use cipher::{
 };
 use core::fmt;
 
-#[cfg(feature = "zeroize")]
-use cipher::zeroize::{Zeroize, ZeroizeOnDrop};
-
 /// ECB mode decryptor.
 #[derive(Clone)]
 pub struct Decryptor<C>
@@ -74,18 +71,6 @@ where
         f.write_str("> { ... }")
     }
 }
-
-#[cfg(feature = "zeroize")]
-#[cfg_attr(docsrs, doc(cfg(feature = "zeroize")))]
-impl<C: BlockDecryptMut + BlockCipher> Drop for Decryptor<C> {
-    fn drop(&mut self) {
-        self.iv.zeroize();
-    }
-}
-
-#[cfg(feature = "zeroize")]
-#[cfg_attr(docsrs, doc(cfg(feature = "zeroize")))]
-impl<C: BlockDecryptMut + BlockCipher + ZeroizeOnDrop> ZeroizeOnDrop for Decryptor<C> {}
 
 struct Closure<BS, BC>
 where
