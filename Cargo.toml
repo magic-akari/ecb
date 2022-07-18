@@ -1,6 +1,6 @@
 [package]
 name = "ecb"
-version = "0.1.0"
+version = "0.1.1"
 description = "Electronic Codebook (ECB) block cipher mode of operation"
 authors = ["RustCrypto Developers", "magic-akari"]
 license = "MIT"
