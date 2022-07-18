@@ -30,8 +30,8 @@ done with a minor version bump.
 
 [//]: # (badges)
 
-[crate-image]: https://img.shields.io/crates/v/ECB.svg
-[crate-link]: https://crates.io/crates/ECB
+[crate-image]: https://img.shields.io/crates/v/ecb.svg
+[crate-link]: https://crates.io/crates/ecb
 [docs-image]: https://docs.rs/ecb/badge.svg
 [docs-link]: https://docs.rs/ecb/
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
