@@ -36,6 +36,8 @@ done with a minor version bump.
 [docs-link]: https://docs.rs/ecb/
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
 [rustc-image]: https://img.shields.io/badge/rustc-1.56+-blue.svg
+[build-image]: https://github.com/magic-akari/ecb/actions/workflows/test.yml/badge.svg?event=push
+[build-link]: https://github.com/magic-akari/ecb/actions/workflows/test.yml
 
 [//]: # (general links)
 
