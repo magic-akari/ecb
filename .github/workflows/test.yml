@@ -1,0 +1,24 @@
+name: Test
+
+on: [push, pull_request]
+
+env:
+    CARGO_INCREMENTAL: 0
+    RUST_LOG: "debug"
+    DIFF: 0
+    RUST_MIN_STACK: 4194304
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Install Rust
+              uses: actions-rs/toolchain@v1
+              with:
+                  profile: minimal
+
+            - run: cargo check --color always --all --all-targets
+            - run: cargo clippy --color always --all --all-targets
+            - run: cargo test --color always --all --all-targets
