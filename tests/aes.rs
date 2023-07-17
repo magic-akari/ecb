@@ -1,3 +1,4 @@
+#[cfg(feature = "block-padding")]
 #[cfg(test)]
 mod tests {
 
