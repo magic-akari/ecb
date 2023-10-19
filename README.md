@@ -9,7 +9,7 @@
 Generic implementation of the [Electronic Codebook][ECB] (ECB) block cipher
 mode of operation.
 
-<img src="https://user-images.githubusercontent.com/7829098/171395128-0ff53e16-1969-4848-8db4-3fc4fd0cbbb4.svg" width="50%"><img src="https://user-images.githubusercontent.com/7829098/171395113-219f6995-4e2d-4f4a-bb10-d6a229c10989.svg" width="50%">
+<img src="https://github.com/magic-akari/ecb/assets/7829098/2d92507b-a014-4769-8022-71802e6f8bd9" width="50%"><img src="https://github.com/magic-akari/ecb/assets/7829098/8596750d-0034-4a7f-bf28-4482c62a9f97" width="50%">
 
 See [documentation][cipher-doc] of the `cipher` crate for additional information.
 
