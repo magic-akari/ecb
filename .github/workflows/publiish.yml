@@ -1,36 +1,16 @@
-name: Publish
-
+name: Publish to crates.io
 on:
-    create:
-        tags:
-            - "v*"
-
-env:
-    CARGO_INCREMENTAL: 0
-    CARGO_PROFILE_RELEASE_LTO: "fat"
-
+    push:
+        tags: ["v*"] # Triggers when pushing tags starting with 'v'
 jobs:
-    build:
-        if: startsWith(github.ref, 'refs/tags/v')
+    publish:
         runs-on: ubuntu-latest
-
+        permissions:
+            id-token: write # Required for OIDC token exchange
         steps:
-            - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
-
-            - name: Install Rust
-              uses: actions-rs/toolchain@v1
-              with:
-                  profile: minimal
-                  toolchain: stable
-                  override: true
-                  components: rustfmt, clippy
-
-            - run: cargo check --color always --all --all-targets
-            - run: cargo fmt --check --all
-            - run: cargo clippy --color always --all --all-targets
-            - run: cargo test --color always --all --all-targets
-
-            - name: publish crates
-              run: cargo publish --token ${CRATES_TOKEN}
+            - uses: actions/checkout@v6
+            - uses: rust-lang/crates-io-auth-action@v1
+              id: auth
+            - run: cargo publish
               env:
-                  CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
+                  CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}

@@ -22,10 +22,10 @@ jobs:
                     - stable
                     - beta
                     - nightly
-                    - "1.56"
+                    - "1.85"
 
         steps:
-            - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
+            - uses: actions/checkout@v6
 
             - name: Install Rust
               uses: actions-rs/toolchain@v1
@@ -36,7 +36,7 @@ jobs:
                   components: rustfmt, clippy
 
             - run: cargo check --color always --all --all-targets
-            - if: matrix.rust != '1.56'
+            - if: matrix.rust != '1.85'
               run: cargo fmt --check --all
             - run: cargo clippy --color always --all --all-targets
             - run: cargo test --color always --all --all-targets
