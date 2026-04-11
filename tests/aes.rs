@@ -4,7 +4,7 @@ mod tests {
 
     #[test]
     fn ecb_aes128() {
-        use aes::cipher::{block_padding::NoPadding, BlockDecryptMut, BlockEncryptMut, KeyInit};
+        use aes::cipher::{BlockModeDecrypt, BlockModeEncrypt, KeyInit, block_padding::NoPadding};
         use ecb::{Decryptor, Encryptor};
 
         let key = include_bytes!("data/aes128.key.bin");
@@ -20,8 +20,7 @@ mod tests {
         let mode = Aes128EcbEnc::new(key.into());
 
         assert_eq!(
-            mode.encrypt_padded_mut::<NoPadding>(&mut buf, pt_len)
-                .unwrap(),
+            mode.encrypt_padded::<NoPadding>(&mut buf, pt_len).unwrap(),
             &ciphertext[..]
         );
 
@@ -29,7 +28,7 @@ mod tests {
         let mode = Aes128EcbDec::new(key.into());
 
         assert_eq!(
-            mode.decrypt_padded_mut::<NoPadding>(&mut buf).unwrap(),
+            mode.decrypt_padded::<NoPadding>(&mut buf).unwrap(),
             &plaintext[..]
         );
     }

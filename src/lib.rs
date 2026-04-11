@@ -13,7 +13,7 @@
 //! # Example
 //! ```
 //! # #[cfg(feature = "block-padding")] {
-//! use aes::cipher::{block_padding::Pkcs7, BlockDecryptMut, BlockEncryptMut, KeyInit};
+//! use aes::cipher::{block_padding::Pkcs7, BlockModeDecrypt, BlockModeEncrypt, KeyInit};
 //! use hex_literal::hex;
 //!
 //! type Aes128EcbEnc = ecb::Encryptor<aes::Aes128>;
@@ -33,35 +33,35 @@
 //! let pt_len = plaintext.len();
 //! buf[..pt_len].copy_from_slice(&plaintext);
 //! let ct = Aes128EcbEnc::new(&key.into())
-//!     .encrypt_padded_mut::<Pkcs7>(&mut buf, pt_len)
+//!     .encrypt_padded::<Pkcs7>(&mut buf, pt_len)
 //!     .unwrap();
 //! assert_eq!(ct, &ciphertext[..]);
 //!
 //! let pt = Aes128EcbDec::new(&key.into())
-//!     .decrypt_padded_mut::<Pkcs7>(&mut buf)
+//!     .decrypt_padded::<Pkcs7>(&mut buf)
 //!     .unwrap();
 //! assert_eq!(pt, &plaintext);
 //!
 //! // encrypt/decrypt from buffer to buffer
 //! let mut buf = [0u8; 48];
 //! let ct = Aes128EcbEnc::new(&key.into())
-//!     .encrypt_padded_b2b_mut::<Pkcs7>(&plaintext, &mut buf)
+//!     .encrypt_padded_b2b::<Pkcs7>(&plaintext, &mut buf)
 //!     .unwrap();
 //! assert_eq!(ct, &ciphertext[..]);
 //!
 //! let mut buf = [0u8; 48];
 //! let pt = Aes128EcbDec::new(&key.into())
-//!     .decrypt_padded_b2b_mut::<Pkcs7>(&ct, &mut buf)
+//!     .decrypt_padded_b2b::<Pkcs7>(&ct, &mut buf)
 //!     .unwrap();
 //! assert_eq!(pt, &plaintext);
 //! # }
 //! ```
 //!
-//! With enabled `alloc` (or `std`) feature you also can use allocating
-//! convinience methods:
+//! With enabled `alloc` feature you also can use allocating convenience
+//! methods:
 //! ```
 //! # #[cfg(all(feature = "alloc", feature = "block-padding"))] {
-//! # use aes::cipher::{block_padding::Pkcs7, BlockDecryptMut, BlockEncryptMut, KeyInit};
+//! # use aes::cipher::{block_padding::Pkcs7, BlockModeDecrypt, BlockModeEncrypt, KeyInit};
 //! # use hex_literal::hex;
 //! # type Aes128EcbEnc = ecb::Encryptor<aes::Aes128>;
 //! # type Aes128EcbDec = ecb::Decryptor<aes::Aes128>;
@@ -73,10 +73,10 @@
 //! #     "e4670ea0d87a71be5f9f3099b4fff3dc"
 //! # );
 //! let res = Aes128EcbEnc::new(&key.into())
-//!     .encrypt_padded_vec_mut::<Pkcs7>(&plaintext);
+//!     .encrypt_padded_vec::<Pkcs7>(&plaintext);
 //! assert_eq!(res[..], ciphertext[..]);
 //! let res = Aes128EcbDec::new(&key.into())
-//!     .decrypt_padded_vec_mut::<Pkcs7>(&res)
+//!     .decrypt_padded_vec::<Pkcs7>(&res)
 //!     .unwrap();
 //! assert_eq!(res[..], plaintext[..]);
 //! # }

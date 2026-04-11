@@ -15,7 +15,7 @@ See [documentation][cipher-doc] of the `cipher` crate for additional information
 
 ## Minimum Supported Rust Version
 
-Rust **1.56** or higher.
+Rust **1.85** or higher.
 
 Minimum supported Rust version can be changed in the future, but it will be
 done with a minor version bump.
@@ -35,7 +35,7 @@ done with a minor version bump.
 [docs-image]: https://docs.rs/ecb/badge.svg
 [docs-link]: https://docs.rs/ecb/
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
-[rustc-image]: https://img.shields.io/badge/rustc-1.56+-blue.svg
+[rustc-image]: https://img.shields.io/badge/rustc-1.85+-blue.svg
 [build-image]: https://github.com/magic-akari/ecb/actions/workflows/test.yml/badge.svg?branch=main
 [build-link]: https://github.com/magic-akari/ecb/actions/workflows/test.yml
 
